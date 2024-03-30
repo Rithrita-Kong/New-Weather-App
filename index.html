@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Weather App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  </head>
+  <body class="bg-blue-950 p-10 m-auto">
+    <h1 class="text-white text-5xl font-bold text-center mb-10">Weather App</h1>
+
+    <!-- Input Field -->
+
+    <div class="relative max-w-2xl mx-auto mb-10">
+      <input
+        type="text"
+        id="input"
+        placeholder="Enter a country/city..."
+        class="w-full rounded-md border-gray-200 px-5 py-2.5 pe-10 shadow-sm sm:text-sm"
+      />
+
+      <button
+        class="absolute inset-y-0 end-0 grid w-10 place-content-center"
+        id="searchButton"
+      >
+        <i
+          class="fa-solid fa-magnifying-glass text-gray-600 hover:text-black"
+        ></i>
+      </button>
+    </div>
+
+    <!-- Error Page -->
+
+    <div
+      class="h-fit py-5 place-content-center bg-white px-4 hidden"
+      id="error-page"
+    >
+      <div class="text-center">
+        <h1 class="text-9xl font-black text-blue-700">404</h1>
+
+        <p class="text-2xl font-bold tracking-tight text-black sm:text-4xl">
+          Uh-oh!
+        </p>
+
+        <p class="mt-4 text-black">City/Country Not Found.</p>
+      </div>
+    </div>
+
+    <!-- Result Page -->
+
+    <div class="bg-gray-200 pb-10 hidden" id="result-page">
+      <h1 class="text-black text-2xl text-center pt-5 font-semibold" id="city">
+        Result: Cambodia
+      </h1>
+      <div class="flex justify-around p-6 mt-5" id="card-block">
+        <article
+          class="w-72 flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="w-10 h-10 flex items-center justify-center rounded-full text-gray-600 bg-gray-100"
+            >
+              <i class="fa-solid fa-temperature-high text-2xl"></i>
+            </span>
+
+            <div>
+              <p class="text-sm text-gray-500">Temperature:</p>
+
+              <p
+                class="text-2xl font-medium text-gray-900"
+                id="temperature"
+              ></p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="w-72 flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="w-10 h-10 flex items-center justify-center rounded-full text-gray-600 bg-gray-100"
+            >
+              <i class="fa-solid fa-droplet text-2xl"></i>
+            </span>
+
+            <div>
+              <p class="text-sm text-gray-500">Humidity:</p>
+
+              <p class="text-2xl font-medium text-gray-900" id="humidity"></p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="w-72 flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="w-10 h-10 flex items-center justify-center rounded-full text-gray-600 bg-gray-100"
+            >
+              <i class="fa-solid fa-wind text-2xl"></i>
+            </span>
+
+            <div>
+              <p class="text-sm text-gray-500">Wind Speed:</p>
+
+              <p class="text-2xl font-medium text-gray-900" id="wind"></p>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="w-72 flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="w-10 h-10 flex items-center justify-center rounded-full text-gray-600 bg-gray-100"
+            >
+              <i class="fa-solid fa-water text-2xl"></i>
+            </span>
+
+            <div>
+              <p class="text-sm text-gray-500">Sea Level Pressure:</p>
+
+              <p class="text-2xl font-medium text-gray-900" id="sea"></p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Chart Area -->
+
+      <div id="chart-container">
+        <select
+          class="my-1.5 mx-5 w-52 rounded-lg border-gray-300 text-gray-700 text-center sm:text-sm"
+          id="selectButton"
+        >
+          <option value="temperature_2m_mean">Temperature</option>
+          <option value="rain_sum">Rain</option>
+          <option value="wind_speed_10m_max">Wind Speed</option>
+        </select>
+        <svg id="line-chart"></svg>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/25d3d2c49c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
