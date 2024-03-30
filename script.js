@@ -1,4 +1,3 @@
-// import { apiKey } from "./config";
 const inputElement = document.getElementById("input");
 const searchButton = document.getElementById("searchButton");
 
@@ -215,8 +214,8 @@ async function chart(data) {
 }
 
 // Event listener for search button click
-searchButton.addEventListener("click", handleSearch());
-
+searchButton.addEventListener("click", handleSearch);
+console.log(searchButton);
 // Event listener for Enter key press on input
 inputElement.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {

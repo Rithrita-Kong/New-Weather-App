@@ -9,3 +9,10 @@
 5. The app will show an error message if the city/country is invalid
 
 ## Link for the Web App: https://rithrita-kong.github.io/New-Weather-App/
+
+## User Interface
+
+![Card](./assets/Card.png)
+![Temperature Chart](./assets/Temperature.png)
+![Rain Chart](./assets/Rain.png)
+![Error Page](./assets/Error.png)
